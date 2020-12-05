@@ -1,4 +1,3 @@
-
 function colides(one, two) {
     var h = (((one.x + one.width) <= two.x) || ((two.x + two.width) <= one.x));
     var v = (((one.y + one.height) <= two.y) || ((two.y + two.height) <= one.y));

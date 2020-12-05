@@ -1,4 +1,3 @@
-
 function renderBackground() {
     ctx.fillStyle = "#F0F8FF";
     ctx.fillRect(0, 0, 1280, 720);
