@@ -108,6 +108,17 @@ var buttons = [
         color: "#2CD307",
     },
 ];
+var fading_text = [
+    {
+        x: 1280 / 2,
+        y: 100,
+        text: "Level 1!",
+        font:"30px Comic Sans MS",
+        color: "red",
+        opacity: 100,
+        decay: 100.0 / 60.0 / 3, // 10 sec    100 / s / 60 = x
+    },
+];
 
 function pressButton(button) {
     button.active = false;
@@ -228,6 +239,7 @@ function loop() {
     renderButtons();
     renderCoins();
     renderCharacters();
+    renderTexts();
 }
 
 function loadLevel() {

@@ -37,3 +37,18 @@ function renderButtons() {
                      element.width, element.base_height);
     });
 }
+
+function renderTexts() {
+    fading_text.filter(element => element.opacity > 0).forEach(element => {
+        
+        ctx.font = element.font;
+        ctx.fillStyle = element.color;
+        ctx.textAlign = "center";
+
+        ctx.globalAlpha = element.opacity / 100;
+        element.opacity -= element.decay;
+        console.log(element.opacity);
+        ctx.fillText(element.text, element.x, element.y);
+        ctx.globalAlpha = 1;
+    });
+}
