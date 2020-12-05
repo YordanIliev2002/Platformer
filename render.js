@@ -12,7 +12,7 @@ function renderCharacters() {
 
 function renderPlatforms() {
     ctx.fillStyle = "#45597E";
-    platforms.forEach(element => {
+    platforms.filter(element => element.active != false).forEach(element => {
         ctx.fillRect(element.x, element.y, element.width, element.height);
     });
 }
@@ -23,5 +23,17 @@ function renderCoins() {
         ctx.beginPath();
         ctx.arc(element.x, element.y, element.radius, 0, 2 * Math.PI, false);
         ctx.fill();
+    });
+}
+
+function renderButtons() {
+    buttons.forEach(element => {
+        // button
+        ctx.fillStyle = element.color;
+        ctx.fillRect(element.x, element.y, element.width, element.height);
+        // base
+        ctx.fillStyle = "#111111";
+        ctx.fillRect(element.x, element.y + element.height - element.base_height,
+                     element.width, element.base_height);
     });
 }

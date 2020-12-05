@@ -38,24 +38,28 @@ var platforms = [
         y: 0,
         width: 10,
         height: 710,
+        active: true,
     },
     {
         x: 0,
         y: 710,
         width: 1270,
         height: 10,
+        active: true,
     },
     {
         x: 10,
         y: 0,
         width: 1270,
         height: 10,
+        active: true,
     },
     {
         x: 1270,
         y: 10,
         width: 10,
         height: 710,
+        active: true,
     },
 
 ];
@@ -82,6 +86,34 @@ var coins = [
         radius: 13,
     },
 ];
+var buttons = [
+    {
+        x: 120,
+        y: 585,
+        height: 15,
+        width: 20,
+        base_height: 5,
+        active: true,
+        group: "group1",
+        color: "#DC143C",
+    },
+    {
+        x: 150,
+        y: 585,
+        height: 15,
+        width: 20,
+        base_height: 5,
+        active: true,
+        group: "group1",
+        color: "#2CD307",
+    },
+];
+function pressButton(button) {
+    button.active = false;
+    button.height /= 2;
+    button.y += button.height;
+    platforms.filter((platform) => platform.group == button.group).forEach((platform) => platform.active = !platform.active);
+}
 
 function moveCharacter(index) {
     var player = characters[index];
@@ -99,6 +131,9 @@ function moveCharacter(index) {
     var oldY = player.y;
     player.y += player.deltaY;
     for (platform in platforms) {
+        if(platforms[platform].active != true) {
+            continue;
+        }
         if (colides(player, platforms[platform])) {
             if (player.deltaY > 0) {
                 player.y = platforms[platform].y - player.height;
@@ -142,10 +177,36 @@ function moveCharacter(index) {
             }
         }
     }
+    
+    for (button in buttons) {
+        if (colides(player, buttons[button])) {
+                if(buttons[button].active) {
+                    pressButton(buttons[button]);
+                }
+                player.y = buttons[button].y - player.height;
+                player.deltaY = 0;
+                player.airborne = false;
+                if (keyStates[player.up]) {
+                    player.deltaY = player.jumpStrength;
+                    console.log("jump");
+                    player.airborne = true;
+                }
+        }
+    }
 
     player.x += player.deltaX;
     for (platform in platforms) {
+        if(platforms[platform].active != true) {
+            continue;
+        }
         if (colides(player, platforms[platform])) {
+            player.x = oldX;
+            player.deltaX = 0;
+            break;
+        }
+    }
+    for (button in buttons) {
+        if (colides(player, buttons[button])) {
             player.x = oldX;
             player.deltaX = 0;
             break;
@@ -176,6 +237,7 @@ function loop() {
     }
     renderBackground();
     renderPlatforms();
+    renderButtons();
     renderCoins();
     renderCharacters();
 }
@@ -187,54 +249,64 @@ function loadLevel() {
             y: 600,
             width: 200,
             height: 10,
+            active: true,
         },
         {
             x: 350,
             y: 650,
             width: 200,
             height: 10,
+            active: true,
         },
         {
             x: 450,
             y: 550,
             width: 200,
             height: 10,
+            active: true,
         },
         {
             x: 620,
             y: 515,
             width: 100,
             height: 10,
+            group: "group1",
+            active: true,
         },
         {
             x: 620,
             y: 560,
             width: 10,
             height: 180,
+            active: true,
         },
         {
             x: 720,
             y: 515,
             width: 10,
             height: 170,
+            active: true,
         },
         {
             x: 730,
             y: 630,
             width: 10,
             height: 10,
+            active: true,
         },
         {
             x: 730,
             y: 570,
             width: 10,
             height: 10,
+            active: true,
         },
         {
             x: 670,
             y: 345,
             width: 10,
             height: 170,
+            active: true,
         },
     );
 }
