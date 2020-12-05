@@ -108,6 +108,7 @@ var buttons = [
         color: "#2CD307",
     },
 ];
+
 function pressButton(button) {
     button.active = false;
     button.height /= 2;
@@ -130,18 +131,14 @@ function moveCharacter(index) {
     var oldX = player.x;
     var oldY = player.y;
     player.y += player.deltaY;
-    for (platform in platforms) {
-        if(platforms[platform].active != true) {
-            continue;
-        }
-        if (colides(player, platforms[platform])) {
+    platforms.filter(platform => platform.active).forEach((platform) =>{
+        if (colides(player, platform)) {
             if (player.deltaY > 0) {
-                player.y = platforms[platform].y - player.height;
+                player.y = platform.y - player.height;
                 player.deltaY = 0;
                 player.airborne = false;
                 if (keyStates[player.up]) {
                     player.deltaY = player.jumpStrength;
-                    console.log("jump");
                     player.airborne = true;
                 }
             }
@@ -150,27 +147,24 @@ function moveCharacter(index) {
                 player.deltaY = 0;
                 player.airborne = true;
             }
-            break;
         }
-    }
+    });
+    
     for (var i = 0; i < characters.length; i++) {
         if (i != index) {
             if (colides(player, characters[i])) {
                 if (player.deltaY > 0) {
                     player.y = characters[i].y - player.height;
                     player.deltaY = 0;
-                    console.log(false);
                     player.airborne = false;
                     if (keyStates[player.up]) {
                         player.deltaY = player.jumpStrength;
-                        console.log("jump");
                         player.airborne = true;
                     }
                 }
                 else {
                     player.y = oldY;
                     player.deltaY = 0;
-                    console.log(true);
                     player.airborne = true;
                 }
                 break;
@@ -178,40 +172,37 @@ function moveCharacter(index) {
         }
     }
     
-    for (button in buttons) {
-        if (colides(player, buttons[button])) {
-                if(buttons[button].active) {
-                    pressButton(buttons[button]);
-                }
-                player.y = buttons[button].y - player.height;
-                player.deltaY = 0;
-                player.airborne = false;
-                if (keyStates[player.up]) {
-                    player.deltaY = player.jumpStrength;
-                    console.log("jump");
-                    player.airborne = true;
-                }
-        }
+    buttons.forEach((button) => {
+        if (colides(player, button)) {
+            if(button.active) {
+                pressButton(button);
+            }
+            player.y = button.y - player.height;
+            player.deltaY = 0;
+            player.airborne = false;
+            if (keyStates[player.up]) {
+                player.deltaY = player.jumpStrength;
+                console.log("jump");
+                player.airborne = true;
+            }
     }
+    });
 
     player.x += player.deltaX;
-    for (platform in platforms) {
-        if(platforms[platform].active != true) {
-            continue;
-        }
-        if (colides(player, platforms[platform])) {
+    platforms.filter(platform => platform.active).forEach((platform) =>{
+        if (colides(player, platform)) {
             player.x = oldX;
             player.deltaX = 0;
-            break;
         }
-    }
-    for (button in buttons) {
-        if (colides(player, buttons[button])) {
+    });
+
+    buttons.forEach((button) => {
+        if (colides(player, button)) {
             player.x = oldX;
             player.deltaX = 0;
-            break;
         }
-    }
+    });
+
     for (var i = 0; i < characters.length; i++) {
         if (i != index) {
             if (colides(player, characters[i])) {
@@ -221,14 +212,11 @@ function moveCharacter(index) {
             }
         }
     }
-
-    for (coin in coins) {
-        if (coins[coin].active) {
-            if (coinCollides(player, coins[coin])) {
-                coins[coin].active = false;
-            }
+    coins.filter(coin => coin.active).forEach((coin) => { 
+        if (coinCollides(player, coin)) {
+            coin.active = false;
         }
-    }
+    });
 }
 
 function loop() {
