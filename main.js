@@ -126,74 +126,6 @@ function loop() {
     }
 }
 
-function loadLevel() {
-    platforms.push(
-        {
-            x: 100,
-            y: 600,
-            width: 200,
-            height: 10,
-            active: true,
-        },
-        {
-            x: 350,
-            y: 650,
-            width: 200,
-            height: 10,
-            active: true,
-        },
-        {
-            x: 450,
-            y: 550,
-            width: 200,
-            height: 10,
-            active: true,
-        },
-        {
-            x: 620,
-            y: 515,
-            width: 100,
-            height: 10,
-            group: "group1",
-            active: true,
-        },
-        {
-            x: 620,
-            y: 560,
-            width: 10,
-            height: 180,
-            active: true,
-        },
-        {
-            x: 720,
-            y: 515,
-            width: 10,
-            height: 170,
-            active: true,
-        },
-        {
-            x: 730,
-            y: 630,
-            width: 10,
-            height: 10,
-            active: true,
-        },
-        {
-            x: 730,
-            y: 570,
-            width: 10,
-            height: 10,
-            active: true,
-        },
-        {
-            x: 670,
-            y: 345,
-            width: 10,
-            height: 170,
-            active: true,
-        },
-    );
-}
 
 function init() {
     canvas = document.getElementById("canvas");
@@ -205,5 +137,5 @@ function init() {
 };
 
 init();
-loadLevel();
-var timer  = setInterval(loop, 17); //~60FPS
+loadLevel(1);
+var timer; //~60FPS

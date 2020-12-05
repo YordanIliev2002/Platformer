@@ -1,68 +1,5 @@
-var characters = [
-    {
-        name: "rat",
-        x: 200,
-        y: 500,
-        deltaX: 0,
-        deltaY: 0,
-        airborne: true,
-        height: 20,
-        width: 20,
-        color: "#228B22",
-        up: 38,
-        left: 37,
-        right: 39,
-        gravity: 0.2,
-        jumpStrength: -6,
-    },
-    {
-        name: "bat",
-        x: 300,
-        y: 500,
-        deltaX: 0,
-        deltaY: 0,
-        airborne: true,
-        height: 30,
-        width: 30,
-        color: "#D2691E",
-        up: 87,
-        left: 65,
-        right: 68,
-        gravity: 0.2,
-        jumpStrength: -6,
-    }
-];
-var platforms = [
-    {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 710,
-        active: true,
-    },
-    {
-        x: 0,
-        y: 710,
-        width: 1270,
-        height: 10,
-        active: true,
-    },
-    {
-        x: 10,
-        y: 0,
-        width: 1270,
-        height: 10,
-        active: true,
-    },
-    {
-        x: 1270,
-        y: 10,
-        width: 10,
-        height: 710,
-        active: true,
-    },
-
-];
+var characters = [];
+var platforms = [];
 var keyStates = {
     38: false, // arrow up
     37: false, // arrow left
@@ -72,42 +9,8 @@ var keyStates = {
     65: false, // A
     68: false, // D
 };
-var coins = [
-    {
-        x: 600,
-        y: 530,
-        active: true,
-        radius: 13,
-    },
-    {
-        x: 700,
-        y: 400,
-        active: true,
-        radius: 13,
-    },
-];
-var buttons = [
-    {
-        x: 120,
-        y: 585,
-        height: 15,
-        width: 20,
-        base_height: 5,
-        active: true,
-        group: "group1",
-        color: "#DC143C",
-    },
-    {
-        x: 150,
-        y: 585,
-        height: 15,
-        width: 20,
-        base_height: 5,
-        active: true,
-        group: "group1",
-        color: "#2CD307",
-    },
-];
+var coins = [];
+var buttons = [];
 var fading_text = [
     {
         x: 1280 / 2,
@@ -126,3 +29,44 @@ var level = 1;
 function isCompleted() {
     return !coins.some(coin => coin.active);
 }
+
+function loadLevel(id) {
+    id--;
+    state = "running";
+
+    characters = [];
+    characters = deepCopy(levels[id].characters);
+
+    platforms = [];
+    platforms = deepCopy(levels[id].platforms);
+    platforms.push(...base_platforms);
+
+    coins = [];
+    coins = deepCopy(levels[id].coins);
+
+    buttons = [];
+    buttons = deepCopy(levels[id].buttons);
+
+    fading_text[0].opacity = 100;
+    fading_text[0].text = `Level ${id+1}!`;
+    timer = setInterval(loop, 17);
+}
+const deepCopy = (inObject) => {
+    let outObject, value, key
+  
+    if (typeof inObject !== "object" || inObject === null) {
+      return inObject // Return the value if inObject is not an object
+    }
+  
+    // Create an array or object to hold the values
+    outObject = Array.isArray(inObject) ? [] : {}
+  
+    for (key in inObject) {
+      value = inObject[key]
+  
+      // Recursively (deep) copy for nested objects, including arrays
+      outObject[key] = deepCopy(value)
+    }
+  
+    return outObject;
+  }

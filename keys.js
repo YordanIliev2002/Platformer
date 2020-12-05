@@ -1,4 +1,11 @@
 function keydown(e) {
+    if (state == "completed") {
+        loadLevel(++level);
+    }
+    if(e.keyCode == 82) { // R key
+        window.clearInterval(timer);
+        loadLevel(level);
+    }
     if (e.keyCode == 70) { // F key
         fullscreen = !fullscreen;
         fullscreen ? openFullscreen(): exitFullscreen();

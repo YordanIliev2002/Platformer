@@ -54,9 +54,14 @@ function renderTexts() {
 }
 
 function renderLevelCompletedText() {
+    ctx.fillStyle = "grey";
+    ctx.textAlign = "center";
+
     ctx.font = "90px Comic Sans MS";
-        ctx.fillStyle = "grey";
-        ctx.textAlign = "center";
-        ctx.fillText("Level Completed!", 1280/2, 720/2);
-        ctx.globalAlpha = 1;
+    ctx.fillText("Level Completed!", 1280/2, 720/2);
+
+    ctx.font = "20px Comic Sans MS";
+    ctx.fillText("Press any key to continue", 1280/2, 720/2 + 50);
+    
+    ctx.globalAlpha = 1;
 }
