@@ -52,3 +52,11 @@ function renderTexts() {
         ctx.globalAlpha = 1;
     });
 }
+
+function renderLevelCompletedText() {
+    ctx.font = "90px Comic Sans MS";
+        ctx.fillStyle = "grey";
+        ctx.textAlign = "center";
+        ctx.fillText("Level Completed!", 1280/2, 720/2);
+        ctx.globalAlpha = 1;
+}
