@@ -64,19 +64,21 @@ function renderTexts() {
 function renderLevelCompletedText() {
     ctx.fillStyle = "grey";
     ctx.textAlign = "center";
-    if(levels[level+1] == undefined) {
+    if(levels[level] === undefined) {
         ctx.font = "90px Comic Sans MS";
         ctx.fillText("Congratulations!", 1280/2, 720/2);
     
         ctx.font = "20px Comic Sans MS";
-        ctx.fillText("Thanks for playing!", 1280/2, 720/2 + 50);
+        ctx.fillText("Thanks for playing! <3", 1280/2, 720/2 + 50);
+        ctx.font = "20px Comic Sans MS";
+        ctx.fillText("More levels coming soon!", 1280/2, 720/2 + 80);
     }
     else {
         ctx.font = "90px Comic Sans MS";
         ctx.fillText("Level Completed!", 1280/2, 720/2);
     
         ctx.font = "20px Comic Sans MS";
-        ctx.fillText("Press any key to continue", 1280/2, 720/2 + 50);
+        ctx.fillText("Press SPACE to continue", 1280/2, 720/2 + 50);
     }
     
     ctx.globalAlpha = 1;

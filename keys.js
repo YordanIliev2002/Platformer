@@ -1,6 +1,9 @@
 function keydown(e) {
-    if (state == "completed") {
-        loadLevel(++level);
+    if (state == "completed" && e.keyCode == 32)
+    {
+        if(levels[level] != undefined) {
+            loadLevel(++level);
+        }
     }
     if(e.keyCode == 82) { // R key
         window.clearInterval(timer);

@@ -436,6 +436,487 @@ var levels = [
             },
         ],
     },
+    {
+        characters:[
+            {
+                name: "rat",
+                x: 20,
+                y: 620,
+                deltaX: 0,
+                deltaY: 0,
+                airborne: true,
+                height: 20,
+                width: 20,
+                color: "#228B22",
+                up: 38,
+                left: 37,
+                right: 39,
+                gravity: 0.2,
+                jumpStrength: -6,
+            },
+            {
+                name: "bat",
+                x: 100,
+                y: 630,
+                deltaX: 0,
+                deltaY: 0,
+                airborne: true,
+                height: 30,
+                width: 30,
+                color: "#D2691E",
+                up: 87,
+                left: 65,
+                right: 68,
+                gravity: 0.2,
+                jumpStrength: -6,
+            }
+        ],
+        platforms:[
+            {
+                x: 10,
+                y: 610,
+                width: 120,
+                height: 10,
+                active: true,
+            },   
+            {
+                x: 500,
+                y: 150,
+                width: 10,
+                height: 470,
+                active: true,
+            },
+            {
+                x: 800,
+                y: 150,
+                width: 10,
+                height: 570,
+                active: true,
+            },
+            {
+                x: 500,
+                y: 620,
+                width: 10,
+                height: 100,
+                active: true,
+                group: "1",
+            },
+            {
+                x: 10,
+                y: 450,
+                width: 490,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 810,
+                y: 450,
+                width: 490,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 200,
+                y: 560,
+                width: 300,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 200,
+                y: 520,
+                width: 10,
+                height: 40,
+                active: true,
+                group: "1",
+            },
+            {
+                x: 510,
+                y: 550,
+                width: 60,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 620,
+                y: 610,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "2",
+            },
+            {
+                x: 620,
+                y: 510,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "2",
+            },
+            {
+                x: 620,
+                y: 410,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "2",
+            },
+            {
+                x: 620,
+                y: 310,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "2",
+            },
+            {
+                x: 510,
+                y: 250,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "3",
+            },
+            {
+                x: 510,
+                y: 180,
+                width: 10,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 740,
+                y: 250,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "3",
+            },
+            {
+                x: 790,
+                y: 180,
+                width: 10,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 740,
+                y: 560,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "3",
+            },
+            {
+                x: 510,
+                y: 460,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "3",
+            },
+            {
+                x: 740,
+                y: 360,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "3",
+            },
+            {
+                x: 740,
+                y: 660,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "3",
+            },
+            
+            {
+                x: 440,
+                y: 150,
+                width: 60,
+                height: 10,
+                active: true,
+            },
+            {
+                x: 240,
+                y: 370,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "5"
+            },
+            {
+                x: 1000,
+                y: 370,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "4"
+            },
+            {
+                x: 900,
+                y: 300,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "4"
+            },
+            {
+                x: 1100,
+                y: 300,
+                width: 60,
+                height: 10,
+                active: false,//t
+                group: "4"
+            },
+        ],
+        coins:[
+            {
+                x: 250,
+                y: 530,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 300,
+                y: 530,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 350,
+                y: 530,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 400,
+                y: 530,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 450,
+                y: 530,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 650,
+                y: 470,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 650,
+                y: 370,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 650,
+                y: 270,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 540,
+                y: 210,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 540,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 770,
+                y: 210,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 770,
+                y: 320,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 770,
+                y: 520,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 270,
+                y: 220,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 270,
+                y: 320,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 170,
+                y: 320,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 370,
+                y: 320,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 70,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 270,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 170,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 370,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 470,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 1030,
+                y: 420,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 1030,
+                y: 320,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 1030,
+                y: 220,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 1130,
+                y: 220,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 930,
+                y: 220,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 830,
+                y: 220,
+                active: true,
+                radius: 13,
+            },
+            {
+                x: 1230,
+                y: 220,
+                active: true,
+                radius: 13,
+            },
+        ],
+        buttons:[
+            {
+                x: 40,
+                y: 595,
+                height: 15,
+                width: 20,
+                base_height: 5,
+                active: true,
+                group: "1",
+                color: "#DC143C", //"#2CD307"
+            },
+            {
+                x: 470,
+                y: 545,
+                height: 15,
+                width: 20,
+                base_height: 5,
+                active: true,
+                group: "2",
+                color: "#2CD307", //"#DC143C"
+            },
+            {
+                x: 520,
+                y: 535,
+                height: 15,
+                width: 20,
+                base_height: 5,
+                active: true,
+                group: "3",
+                color: "#00FFFF", //"#DC143C"
+            },
+            {
+                x: 20,
+                y: 435,
+                height: 15,
+                width: 20,
+                base_height: 5,
+                active: true,
+                group: "4",
+                color: "#0000FF", //"#DC143C"
+            },
+            {
+                x: 1230,
+                y: 435,
+                height: 15,
+                width: 20,
+                base_height: 5,
+                active: true,
+                group: "5",
+                color: "#FFFF00", //"#DC143C"
+            },
+        ],
+        texts:[
+            {
+                x: 1280 / 5,
+                y: 500,
+                text: "Cooperate to reach this button",
+                font:"30px Comic Sans MS",
+                color: "green",
+            },
+            {
+                x: 1280 / 2,
+                y: 50,
+                text: "You can restart any time using 'R'",
+                font:"30px Comic Sans MS",
+                color: "green",
+            },
+        ],
+    },
 ];
 
 var base_platforms = [{
