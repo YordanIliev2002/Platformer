@@ -22,6 +22,7 @@ var fading_text = [
         decay: 100.0 / 60.0 / 3, // 10 sec    100 / s / 60 = x
     },
 ];
+var permanent_texts = [];
 
 var state = "running";
 var level = 1;
@@ -34,23 +35,22 @@ function loadLevel(id) {
     id--;
     state = "running";
 
-    characters = [];
     characters = deepCopy(levels[id].characters);
 
-    platforms = [];
     platforms = deepCopy(levels[id].platforms);
     platforms.push(...base_platforms);
 
-    coins = [];
     coins = deepCopy(levels[id].coins);
 
-    buttons = [];
     buttons = deepCopy(levels[id].buttons);
+
+    permanent_texts = deepCopy(levels[id].texts);
 
     fading_text[0].opacity = 100;
     fading_text[0].text = `Level ${id+1}!`;
     timer = setInterval(loop, 17);
 }
+
 const deepCopy = (inObject) => {
     let outObject, value, key
   

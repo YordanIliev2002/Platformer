@@ -1,5 +1,6 @@
 function renderBackground() {
     ctx.fillStyle = "#F0F8FF";
+    ctx.fillStyle = "#222222";
     ctx.fillRect(0, 0, 1280, 720);
 }
 
@@ -50,6 +51,13 @@ function renderTexts() {
         console.log(element.opacity);
         ctx.fillText(element.text, element.x, element.y);
         ctx.globalAlpha = 1;
+    });
+
+    permanent_texts.forEach(element => {
+        ctx.font = element.font;
+        ctx.fillStyle = element.color;
+        ctx.textAlign = "center";
+        ctx.fillText(element.text, element.x, element.y);
     });
 }
 
